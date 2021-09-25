@@ -57,6 +57,39 @@ public class SearchTest {
     }
 
     @Test
+    public void everyResultContainsSearchWord()
+    {
+        // Находим и климкаем по полю ввода
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text, \"Search Wikipedia\")]"),
+                "Cannot find search input",
+                15
+        );
+
+        // Вводим поисковое слово Java
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Java",
+                "Cannot find search line", 15
+        );
+
+        // Проверяем, что есть хотя бы одно слово в поиске
+        waitForElementPresent(
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_title'][contains(@text, 'Java')]"),
+                "There is at least one result",
+                15
+        );
+
+        // Считаем, сколько статей нашлось
+        List<WebElement> articles = waitForElementsPresent(
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_title'][contains(@text, 'Java')]"),
+                "Cannot find search results",
+                15
+        );
+        System.out.println("Количество результатов, где содержится поисковое слово Java: " + articles.size());
+    }
+
+    @Test
     public void testCancelSearch() throws InterruptedException {
 
         // Находим и климкаем по полю ввода
