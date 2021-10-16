@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -41,6 +41,11 @@ public class FirstTest {
                 "Cannot find search input",
                 15
         );
+
+        if (driver.getOrientation() == ScreenOrientation.LANDSCAPE)
+        {
+            driver.rotate(ScreenOrientation.PORTRAIT);
+        }
     }
 
     @After
@@ -177,7 +182,8 @@ public class FirstTest {
 
         waitForElementPresent(
                 By.xpath("//*[@text = 'Java (programming language)']"),
-                "Cannot find Title Java"
+                "Cannot find Title Java",
+                15
         );
     }
 
