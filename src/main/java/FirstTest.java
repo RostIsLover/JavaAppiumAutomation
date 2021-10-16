@@ -4,6 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -181,6 +182,31 @@ public class FirstTest {
     }
 
     @Test
+    public void assertTitle()
+    {
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "Cannot find search input",
+                15
+        );
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Java",
+                "Cannot find search line", 15
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_description'][@text = 'Object-oriented programming language']"),
+                "Cannot find 'Object-oriented programming language' in topic by searching 'Java'",
+                15
+        );
+
+        assertElementPresent("title");
+    }
+
+
+    @Test
     public void testCancelSearch()
     {
         waitForElementAndClick(
@@ -266,5 +292,10 @@ public class FirstTest {
                 .moveTo(PointOption.point(left_x, middle_y))
                 .release()
                 .perform();
+    }
+
+    private void assertElementPresent(String element)
+    {
+        Assert.assertTrue("Element " + element + " doesn't exist", driver.findElements(By.xpath(element)).size() != 0);
     }
 }
