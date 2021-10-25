@@ -17,12 +17,8 @@ public class SearchPageObject extends MainPageObject {
             SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL = "//*[child::*[@resource-id = 'org.wikipedia:id/page_list_item_title'][@text = '{TITLE}'] " +
             "and child::*[@resource-id = 'org.wikipedia:id/page_list_item_description'][@text = '{DESCRIPTION}}']]",
             SEARCH_CLOSE_BTN = "org.wikipedia:id/search_close_btn",
-            SEARCH_ARTICLE_BOOKMARK_ID = "org.wikipedia:id/article_menu_bookmark",
-            SEARCH_ADD_TO_LIST_BTN_XPATH = "//*[@text = 'ADD TO LIST']",
-            SEARCH_LIST_PLACEHOLDER_ID = "org.wikipedia:id/textinput_placeholder",
-            SEARCH_OK_BTN_ID = "android:id/button1",
-            SEARCH_TEXT_TPL = "//*[@text = '{SUBSTRING}']",
-            SEARCH_VIEW_LIST_XPATH = "//*[@text = 'VIEW LIST']";
+            SEARCH_TEXT_TPL = "//*[@text = '{SUBSTRING}']";
+
 
     public SearchPageObject(AppiumDriver driver) {
         super(driver);

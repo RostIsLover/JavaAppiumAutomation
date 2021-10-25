@@ -21,6 +21,7 @@ public class SearchTest extends CoreTestCase {
                 "Search Wikipedia", "Search input doesn't contain 'Search Wikipedia'");
     }
 
+    // Ex 9*
     @Test
     public void testEveryResultContainsSearchWord()
     {
@@ -30,13 +31,13 @@ public class SearchTest extends CoreTestCase {
         searchPageObject.initSearchInput();
 
         // Вводим поисковое слово Ford
-        searchPageObject.typeSearchLine("Ford");
+        searchPageObject.typeSearchLine("Java");
 
         // Проверяем, что есть хотя бы одно слово в поиске
-        searchPageObject.waitForSearchResult("Ford");
+        searchPageObject.waitForElementByTitleAndDescription("Java", "Object-oriented programming language");
 
-        // Убеждаемся, что нашлось больше одной статьи
-        searchPageObject.checkArticlesSize(1, "Ford");
+        // Убеждаемся, что нашлось больше одной статьи (проверяют заголовки результатов)
+        searchPageObject.checkArticlesSize(3, "Java");
     }
 
     // Ex 3
