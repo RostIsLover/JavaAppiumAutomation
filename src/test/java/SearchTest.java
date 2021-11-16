@@ -1,13 +1,16 @@
 import lib.CoreTestCase;
 import lib.ui.MainPageObject;
 import lib.ui.SearchPageObject;
-import org.junit.Test;
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 public class SearchTest extends CoreTestCase {
 
     protected MainPageObject mainPageObject;
 
+    @BeforeClass
     protected void setUp() throws Exception {
         super.setUp();
 
@@ -15,6 +18,12 @@ public class SearchTest extends CoreTestCase {
     }
 
     @Test
+    @DisplayName("Check Text Hint")
+    @Description("Check that text has a hint")
+    @Feature("Positive test cases")
+    @Issue("159781")
+    @Severity("Minor")
+    @Story("User story")
     public void testHintTextTest() throws InterruptedException
     {
         mainPageObject.assertElementHasText(By.xpath("//*[@resource-id = 'org.wikipedia:id/search_container']//*[@text = 'Search Wikipedia']"),
@@ -23,6 +32,12 @@ public class SearchTest extends CoreTestCase {
 
     // Ex 9*
     @Test
+    @DisplayName("Every Result Contains Search Word")
+    @Description("Check Every Result Contains Search Word after pushing button search")
+    @Feature("Positive test cases")
+    @Issue("159782")
+    @Severity("CRITICAL")
+    @Story("User story")
     public void testEveryResultContainsSearchWord()
     {
         SearchPageObject searchPageObject = new SearchPageObject(driver);
@@ -42,6 +57,12 @@ public class SearchTest extends CoreTestCase {
 
     // Ex 3
     @Test
+    @DisplayName("Check cancel search")
+    @Description("Check cancel search after enter search word in search input")
+    @Feature("Positive test cases")
+    @Issue("159783")
+    @Severity("BLOCKER")
+    @Story("User story")
     public void testCancelSearch() throws InterruptedException {
 
         SearchPageObject searchPageObject = new SearchPageObject(driver);
